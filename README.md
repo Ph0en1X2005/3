@@ -40,7 +40,8 @@
 ## Задание 1
 ### Написать программы Hello world на Python и Unity
 Для Python я решила использовать PyCharm. Создала новый проект и написала нужную программу:
-![Image alt](https://github.com/Elenaz441/DA-in-GameDev-lab1/commit/620be89e81cc6b026a9f23ae7dd59245d6bc42ea)
+![1](https://user-images.githubusercontent.com/102030455/191915927-ef3f27a3-0bfb-4d6f-b19f-6a0ca4f79613.jpg)
+
 
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
 Ход работы:
