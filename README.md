@@ -91,11 +91,6 @@ def optimize(a, b, x, y, Lr):
     b -= Lr * db
     return a, b
 
-def iterate(a, b, x, y, times, Lr):
-    for i in range(times):
-        a, b = optimize(a, b, x, y, Lr)
-    return a, b
-
 ```
 
 ![5](https://user-images.githubusercontent.com/102030455/192087856-c5200bc3-5d63-41f6-9a8c-8d7d5c7f8667.jpg)
