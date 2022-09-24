@@ -112,10 +112,25 @@ def optimize(a, b, x, y, Lr):
 
 ![8](https://user-images.githubusercontent.com/102030455/192090419-3adbcc6d-a93c-4fc8-ac75-9eca66fc5b98.jpg)
 
+2) Lr влияет на наклон графика (прямой), при использовании функции optimize. Чем меньше Lr, тем больше наклонен график:
+
+-Lr = 1:
+![9](https://user-images.githubusercontent.com/102030455/192091651-ee625ae7-d521-4b87-8ba5-f7897e56e782.jpg)
+
+-Lr = 0.01:
+![10](https://user-images.githubusercontent.com/102030455/192091656-a8b0ee71-0d9b-404a-960b-e05c0b337675.jpg)
+
+-Lr = 0.001:
+![11](https://user-images.githubusercontent.com/102030455/192091658-79e191e6-28d5-4694-90f1-d0df5d23ee7d.jpg)
+
+-Lr = 0.0001:
+![12](https://user-images.githubusercontent.com/102030455/192091660-bbb961b6-52be-4664-98f3-9c3f79d0def1.jpg)
+
+
 
 ## Выводы
 
-Абзац умных слов о том, что было сделано и что было узнано.
+Научилась делать вывод в консоль, используя Python и Unity (C#). Также был проведен небольшой анализ кода для ответа на вопросы.
 
 | Plugin | README |
 | ------ | ------ |
