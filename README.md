@@ -81,6 +81,8 @@ plt.scatter(x,y)
 
 - Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
 
+Определил связь функций:
+
 Функция модели:
 
 ```py
@@ -143,62 +145,30 @@ def optimize(a, b, x, y, Lr):
 ## Задание 3
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+Да, должна. Если мы увеличим количества итераций, величина loss будет стремиться к нулю.
 
-```py
+При 1 итерации, loss будет равна приблизительно 1411
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+![1](https://user-images.githubusercontent.com/114404329/192337406-75337c9f-c27f-4f59-8829-f8e2ef08d6ef.PNG)
 
-```
+При 10000 итераций, loss будет равна приблизительно 189
 
-## Задание 3
+![10000](https://user-images.githubusercontent.com/114404329/192337624-42d0a4f8-84e4-465c-a345-2ddb82a19e63.PNG)
+
+При 1000000 итераций, loss будет равна приблизительно 182
+
+![1000000](https://user-images.githubusercontent.com/114404329/192338193-2c9b44cb-e9b9-49dd-82fb-f8a8d7c108b6.PNG)
+
+Эти примеры доказывают, что при увеличении колличества итераций, loss становится меньше, следовательно, стремится к нулю
+
 ### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
-
-```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
-```
+Параметр Lr влияет на угол наклона графика. Чем меньше параметр, тем наклон графика больше.
 
 ## Выводы
 
-Абзац умных слов о том, что было сделано и что было узнано.
+В ходе данной работы были написаны программы в среде Unity, a также PyCharm.
+Я познакомилась с алгоритмом линейной регрессии, осуществила функции модели, потерь и оптимизации.  Также были проведены эксперименты с различными исходными данными и выявлены зависимости и закономерности.
 
 | Plugin | README |
 | ------ | ------ |
