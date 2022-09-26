@@ -99,14 +99,13 @@
  
  - Значениe Lr из прошлой задачи координально меняю.
 
-![image](https://user-images.githubusercontent.com/60822244/192335203-cc7b1375-23c1-4200-b51e-4d79fc0b6b03.png)
-
- - Увеличиваю шаг до 1000 и сравниваю loss с предыдущей задачей.
-
-![image](https://user-images.githubusercontent.com/60822244/192335299-880e9a2c-2a69-4431-83f8-28a598485b01.png)
+![image](https://user-images.githubusercontent.com/60822244/192337616-19acff6d-7c0c-4a70-8e20-ddf5e44705e7.png)
 
 
+ - Увеличиваю шаг хотя бы до 10 и сравниваю loss с предыдущей задачей.
 
+![image](https://user-images.githubusercontent.com/60822244/192337705-01adf4b2-3dac-4ad7-b613-665d1991cb24.png)
+![image](https://user-images.githubusercontent.com/60822244/192330940-d733706d-ab25-4757-a1b3-dfafbad54c77.png)
 
 
 ## Выводы
