@@ -40,15 +40,16 @@
 ## Задание 1
 ### Написать программы Hello world на Python и Unity
 Для взаимодейстия с Python использовался Google Colab.
-![1](https://user-images.githubusercontent.com/114404329/192327326-840f89c6-cc97-4229-a8d7-715299bfccec.png)
-![2](https://user-images.githubusercontent.com/114404329/192327333-7403293f-4219-4474-9582-f259ebdad788.png)
 
+![Collab1](https://user-images.githubusercontent.com/114404329/192327326-840f89c6-cc97-4229-a8d7-715299bfccec.png)
+![Collab2](https://user-images.githubusercontent.com/114404329/192327333-7403293f-4219-4474-9582-f259ebdad788.png)
 
 Ход действий для выполнение задания, связанного с Unity:
 Сначала был создан новый Unity проект. В проект были добавлены куб и плоскость. К сцене был привязан скрип с выводом "Hello World!" на консоль. После выполнения скрипта было выведено сообщение в консоль "Hello World!".
-![3](https://user-images.githubusercontent.com/114404329/192327283-4ab47208-b650-46a1-8307-b0a186da2d63.PNG)
-![4](https://user-images.githubusercontent.com/114404329/192327289-48009be2-0a74-4f02-a8ab-8efa992ec9e1.PNG)
-![5](https://user-images.githubusercontent.com/114404329/192327291-a7857204-5caf-4927-a432-96916abfe79f.png)
+
+![Unity1](https://user-images.githubusercontent.com/114404329/192327283-4ab47208-b650-46a1-8307-b0a186da2d63.PNG)
+![unity2](https://user-images.githubusercontent.com/114404329/192327289-48009be2-0a74-4f02-a8ab-8efa992ec9e1.PNG)
+![Unity screan3](https://user-images.githubusercontent.com/114404329/192327291-a7857204-5caf-4927-a432-96916abfe79f.png)
 
 ## Задание 2
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
@@ -74,8 +75,40 @@ y = np.array(y)
 plt.scatter(x,y)
 
 ```
+Перенёс данные в Google Colab:
 
 - Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
+
+Функция модели:
+```py
+
+def model(a, b, x):
+    return a * x + b
+    
+```    
+
+Функция потерь:
+```py
+
+def lossFunction(a, b, x, y):
+    num = len(x)
+    prediction = model(a, b, x)
+    return (0.5 / num) * (np.square(prediction - y)).sum()
+
+```
+Функция оптимизации:
+```py
+
+def optimize(a, b, x, y, Lr):
+    num = len(x)
+    prediction = model(a, b, x)
+    da = (1.0 / num) * ((prediction - y) * x).sum()
+    db = (1.0 / num) * ((prediction - y).sum())
+    a = a - Lr * da
+    b = b - Lr * db
+    return a, b
+    
+```
 
 
 ## Задание 3
