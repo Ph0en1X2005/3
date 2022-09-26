@@ -77,6 +77,8 @@ plt.scatter(x,y)
 ```
 Перенёс данные в Google Colab:
 
+![0](https://user-images.githubusercontent.com/114404329/192331448-57ae7079-9b0a-48c3-969f-c786aa555b97.PNG)
+
 - Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
 
 Функция модели:
@@ -109,7 +111,29 @@ def optimize(a, b, x, y, Lr):
     return a, b
     
 ```
+Шаг 1
 
+![1](https://user-images.githubusercontent.com/114404329/192333419-77e5df15-a1aa-4d3c-997f-a3f5e8075b38.PNG)
+ 
+Шаг 2
+
+![2](https://user-images.githubusercontent.com/114404329/192333497-fef8fa0e-4bb3-4fe1-9d6d-fb5a6386395f.PNG)
+
+Шаг 3
+
+![3](https://user-images.githubusercontent.com/114404329/192333562-b807a78c-fb3d-47f8-a5aa-0ed12ab62b20.PNG)
+
+Шаг 4
+
+![4](https://user-images.githubusercontent.com/114404329/192333721-71abba83-bfce-402e-807f-e574c522888a.PNG)
+
+Шаг 5
+
+![5](https://user-images.githubusercontent.com/114404329/192333765-7fcd5556-1e3c-47e0-9e18-302e982dc966.PNG)
+
+Шаг 6
+
+![10000](https://user-images.githubusercontent.com/114404329/192333798-d80669b3-0482-4936-9aa7-a7ae7d840d24.PNG)
 
 ## Задание 3
 ### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
