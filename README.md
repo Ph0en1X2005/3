@@ -7,8 +7,8 @@
 | Задание | Выполнение | Баллы |
 | ------ | ------ | ------ |
 | Задание 1 | * | 60 |
-| Задание 2 | # | 20 |
-| Задание 3 | # | 20 |
+| Задание 2 | * | 20 |
+| Задание 3 | * | 20 |
 
 знак "*" - задание выполнено; знак "#" - задание не выполнено;
 
@@ -36,74 +36,26 @@
 
 
 ## Задание 2
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### В разделе "ход работы" пошагово выполнить каждый пункт с описанием и примером реализации задачи по теме лабораторной работы.
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+![i1](https://user-images.githubusercontent.com/103359810/192343743-91287bde-02e5-4b83-956e-00a95e6a96bd.PNG)
+![i2](https://user-images.githubusercontent.com/103359810/192343766-a221b92c-fa03-4b0d-b00f-55ae3f993adf.PNG)
+![3i](https://user-images.githubusercontent.com/103359810/192343790-20f98d1d-0715-4d9f-ab43-5485701b25fa.PNG)
+![i4](https://user-images.githubusercontent.com/103359810/192343807-ee38f722-f3fd-4d7f-93a5-794ab8ed268a.PNG)
+![i5](https://user-images.githubusercontent.com/103359810/192343820-7b4e1829-17cb-4f7c-a201-0ecbec1c53c3.PNG)
+![i6](https://user-images.githubusercontent.com/103359810/192343839-87818879-4de1-48e0-9d0e-eff940693052.PNG)
 
-```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
-```
+Чем больше параметр times тем больше разница между исходными и новыми значениями a и b (причем значение a растет). В то же время уменьшается значение loss (это видно только на 6 пункте, так как значения a и b случайны)
 
 ## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
+### Ответить на вопросы
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
 
-```py
+Величина loss будет стремиться к нулю при уменьшении значений массивов x и y.
+![1111](https://user-images.githubusercontent.com/103359810/192347759-a3d12c93-3a23-40e7-8a85-7d76417499dc.PNG)
 
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
+Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента
 
-```
-
-## Выводы
-
-Абзац умных слов о том, что было сделано и что было узнано.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
-
-## Powered by
-
-**BigDigital Team: Denisov | Fadeev | Panov**
+Чем больше параметр Lr тем больше разница между исходными и новыми значениями a и b (причем значение a и b растет). Значение переменной loss также увеличивается
+![2222](https://user-images.githubusercontent.com/103359810/192348739-1d3a2aa8-93e7-4a97-9d5d-85b11cbb9eb4.PNG)
