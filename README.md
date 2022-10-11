@@ -93,99 +93,100 @@
 
 ![3 3](https://user-images.githubusercontent.com/114404329/195174893-0a327a0a-1f09-4e3f-89ea-52439943412d.PNG)
 
-<picture>using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using SimpleJSON;
+<picture>
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+    using UnityEngine.Networking;
+    using SimpleJSON;
 
-public class NewBehaviourScript : MonoBehaviour
-{
-    public AudioClip goodSpeak;
-    public AudioClip normalSpeak;
-    public AudioClip badSpeak;
-    private AudioSource selectAudio;
-    private Dictionary<string,float> dataSet = new Dictionary<string, float>();
-    private bool statusStart = false;
-    private int i = 1;
-
-    // Start is called before the first frame update
-    void Start()
+    public class NewBehaviourScript : MonoBehaviour
     {
-        StartCoroutine(GoogleSheets());
-    }
+        public AudioClip goodSpeak;
+        public AudioClip normalSpeak;
+        public AudioClip badSpeak;
+        private AudioSource selectAudio;
+        private Dictionary<string,float> dataSet = new Dictionary<string, float>();
+        private bool statusStart = false;
+        private int i = 1;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (i > dataSet.Count) 
+        // Start is called before the first frame update
+        void Start()
         {
-            return;
-        }
-        if (dataSet["Mon_" + i.ToString()] >= 90 & statusStart == false & i <= dataSet.Count)
-        {
-            StartCoroutine(PlaySelectAudioGood());
-            Debug.Log(dataSet["Mon_" + i.ToString()]);
+            StartCoroutine(GoogleSheets());
         }
 
-        if (dataSet["Mon_" + i.ToString()] <= 500 & dataSet["Mon_" + i.ToString()] >= 30 & statusStart == false & i <= dataSet.Count)
+        // Update is called once per frame
+        void Update()
         {
-            StartCoroutine(PlaySelectAudioNormal());
-            Debug.Log(dataSet["Mon_" + i.ToString()]);
+            if (i > dataSet.Count) 
+            {
+                return;
+            }
+            if (dataSet["Mon_" + i.ToString()] >= 90 & statusStart == false & i <= dataSet.Count)
+            {
+                StartCoroutine(PlaySelectAudioGood());
+                Debug.Log(dataSet["Mon_" + i.ToString()]);
+            }
+
+            if (dataSet["Mon_" + i.ToString()] <= 500 & dataSet["Mon_" + i.ToString()] >= 30 & statusStart == false & i <= dataSet.Count)
+            {
+                StartCoroutine(PlaySelectAudioNormal());
+                Debug.Log(dataSet["Mon_" + i.ToString()]);
+            }
+
+            if (dataSet["Mon_" + i.ToString()] <= -0 & statusStart == false & i <= dataSet.Count)
+            {
+                StartCoroutine(PlaySelectAudioBad());
+                Debug.Log(dataSet["Mon_" + i.ToString()]);
+            }
         }
 
-        if (dataSet["Mon_" + i.ToString()] <= -0 & statusStart == false & i <= dataSet.Count)
+        IEnumerator GoogleSheets()
         {
-            StartCoroutine(PlaySelectAudioBad());
-            Debug.Log(dataSet["Mon_" + i.ToString()]);
+            UnityWebRequest curentResp = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1xaf3NHEcjJtk_3BtuyEvQOxFDK187dLF9PCWf8NwQdU/values/Лист1?key=AIzaSyBoEQc3LUe4qNeZ_5kbk8WqL0UvbdXy86o");
+            yield return curentResp.SendWebRequest();
+            string rawResp = curentResp.downloadHandler.text;
+            var rawJson = JSON.Parse(rawResp);
+            foreach (var itemRawJson in rawJson["values"])
+            {
+                var parseJson = JSON.Parse(itemRawJson.ToString());
+                var selectRow = parseJson[0].AsStringList;
+                dataSet.Add(("Mon_" + selectRow[0]), float.Parse(selectRow[2]));
+            }
+        }
+
+        IEnumerator PlaySelectAudioGood()
+        {
+            statusStart = true;
+            selectAudio = GetComponent<AudioSource>();
+            selectAudio.clip = goodSpeak;
+            selectAudio.Play();
+            yield return new WaitForSeconds(3);
+            statusStart = false;
+            i++;
+        }
+        IEnumerator PlaySelectAudioNormal()
+        {
+            statusStart = true;
+            selectAudio = GetComponent<AudioSource>();
+            selectAudio.clip = normalSpeak;
+            selectAudio.Play();
+            yield return new WaitForSeconds(3);
+            statusStart = false;
+            i++;
+        }
+        IEnumerator PlaySelectAudioBad()
+        {
+            statusStart = true;
+            selectAudio = GetComponent<AudioSource>();
+            selectAudio.clip = badSpeak;
+            selectAudio.Play();
+            yield return new WaitForSeconds(4);
+            statusStart = false;
+            i++;
         }
     }
-
-    IEnumerator GoogleSheets()
-    {
-        UnityWebRequest curentResp = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1xaf3NHEcjJtk_3BtuyEvQOxFDK187dLF9PCWf8NwQdU/values/Лист1?key=AIzaSyBoEQc3LUe4qNeZ_5kbk8WqL0UvbdXy86o");
-        yield return curentResp.SendWebRequest();
-        string rawResp = curentResp.downloadHandler.text;
-        var rawJson = JSON.Parse(rawResp);
-        foreach (var itemRawJson in rawJson["values"])
-        {
-            var parseJson = JSON.Parse(itemRawJson.ToString());
-            var selectRow = parseJson[0].AsStringList;
-            dataSet.Add(("Mon_" + selectRow[0]), float.Parse(selectRow[2]));
-        }
-    }
-
-    IEnumerator PlaySelectAudioGood()
-    {
-        statusStart = true;
-        selectAudio = GetComponent<AudioSource>();
-        selectAudio.clip = goodSpeak;
-        selectAudio.Play();
-        yield return new WaitForSeconds(3);
-        statusStart = false;
-        i++;
-    }
-    IEnumerator PlaySelectAudioNormal()
-    {
-        statusStart = true;
-        selectAudio = GetComponent<AudioSource>();
-        selectAudio.clip = normalSpeak;
-        selectAudio.Play();
-        yield return new WaitForSeconds(3);
-        statusStart = false;
-        i++;
-    }
-    IEnumerator PlaySelectAudioBad()
-    {
-        statusStart = true;
-        selectAudio = GetComponent<AudioSource>();
-        selectAudio.clip = badSpeak;
-        selectAudio.Play();
-        yield return new WaitForSeconds(4);
-        statusStart = false;
-        i++;
-    }
-}
 
 ## Выводы
 
