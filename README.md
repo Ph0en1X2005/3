@@ -28,11 +28,13 @@
 Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
 
 ## Задание 1
-### Написать программы Hello World на Python и Unity
+### Совместную работа и передача данных в связке Python - Google-Sheets – Unity.
 
-![python](https://user-images.githubusercontent.com/103359810/192280269-ca913864-5141-4af3-862e-640fde5ea534.PNG)
-![unity](https://user-images.githubusercontent.com/103359810/192280306-4c0868eb-c2bb-4448-9629-eda23bdb5fea.PNG)
-
+Удалось связать python unity и google sheets, все работает корректно
+![python-google sheets](https://user-images.githubusercontent.com/103359810/195163628-8c40d5dd-f88a-4eec-b7cf-e1aa721156e4.png)
+![Снимок экрана (79)](https://user-images.githubusercontent.com/103359810/195163712-940df21c-2911-4020-9cd4-4d08ac7f3b05.png)
+![Снимок экрана (77)](https://user-images.githubusercontent.com/103359810/195163738-f55b322f-2c6d-4cd0-9bdc-c3d0d410a2bd.png)
+![Снимок экрана (80)](https://user-images.githubusercontent.com/103359810/195163770-d90092c6-8e55-462a-8c76-0750122fcb84.png)
 
 ## Задание 2
 ### В разделе "ход работы" пошагово выполнить каждый пункт с описанием и примером реализации задачи по теме лабораторной работы.
