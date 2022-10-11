@@ -28,25 +28,20 @@
 Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
 
 ## Задание 1
-### Совместную работа и передача данных в связке Python - Google-Sheets – Unity.
+### Совместная работа и передача данных в связке Python - Google-Sheets – Unity.
 
-Удалось связать python unity и google sheets, все работает корректно
+Удалось связать python unity и google-sheets, все работает корректно
 ![python-google sheets](https://user-images.githubusercontent.com/103359810/195163628-8c40d5dd-f88a-4eec-b7cf-e1aa721156e4.png)
 ![Снимок экрана (79)](https://user-images.githubusercontent.com/103359810/195163712-940df21c-2911-4020-9cd4-4d08ac7f3b05.png)
 ![Снимок экрана (77)](https://user-images.githubusercontent.com/103359810/195163738-f55b322f-2c6d-4cd0-9bdc-c3d0d410a2bd.png)
 ![Снимок экрана (80)](https://user-images.githubusercontent.com/103359810/195163770-d90092c6-8e55-462a-8c76-0750122fcb84.png)
 
 ## Задание 2
-### В разделе "ход работы" пошагово выполнить каждый пункт с описанием и примером реализации задачи по теме лабораторной работы.
+### Реализовать запись в Google-таблицу набора данных, полученных с помощью линейной регрессии из лабораторной работы № 1. 
 
-![i1](https://user-images.githubusercontent.com/103359810/192343743-91287bde-02e5-4b83-956e-00a95e6a96bd.PNG)
-![i2](https://user-images.githubusercontent.com/103359810/192343766-a221b92c-fa03-4b0d-b00f-55ae3f993adf.PNG)
-![3i](https://user-images.githubusercontent.com/103359810/192343790-20f98d1d-0715-4d9f-ab43-5485701b25fa.PNG)
-![i4](https://user-images.githubusercontent.com/103359810/192343807-ee38f722-f3fd-4d7f-93a5-794ab8ed268a.PNG)
-![i5](https://user-images.githubusercontent.com/103359810/192343820-7b4e1829-17cb-4f7c-a201-0ecbec1c53c3.PNG)
-![i6](https://user-images.githubusercontent.com/103359810/192343839-87818879-4de1-48e0-9d0e-eff940693052.PNG)
-
-Чем больше параметр times тем больше разница между исходными и новыми значениями a и b (причем значение a растет). В то же время уменьшается значение loss (это видно только на 6 пункте, так как значения a и b случайны)
+Переписал код из первого задания, связь между python и google-sheets не пропал
+![Снимок экрана (81)](https://user-images.githubusercontent.com/103359810/195171303-1825a86f-bbf6-41d0-b5ca-cf77341774e0.png)
+![Снимок экрана (82)](https://user-images.githubusercontent.com/103359810/195171407-f7d54573-9b43-4178-b05b-13ac2c849c47.png)
 
 ## Задание 3
 ### Ответить на вопросы
