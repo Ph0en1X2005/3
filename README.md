@@ -98,7 +98,6 @@
     using UnityEngine;
     using UnityEngine.Networking;
     using SimpleJSON;
-
     public class NewBehaviourScript : MonoBehaviour
     {
         public AudioClip goodSpeak;
