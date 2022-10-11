@@ -1,5 +1,5 @@
-# АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
-Отчет по лабораторной работе #1 выполнил(а):
+# Сбор, обработка и визуализация тестового набора данных[in GameDev]
+Отчет по лабораторной работе #2 выполнил(а):
 - Пичугин Михаил Сергеевич 
 - РИ-210932
 Отметка о выполнении заданий (заполняется студентом):
@@ -35,22 +35,27 @@
 - ✨Magic ✨
 
 ## Цель работы
-Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
+Познакомиться с программными средствами для организции передачи данных между инструментами google, Python и Unity.
 
 ## Задание 1
-### Написать программы Hello world на Python и Unity
-Для взаимодейстия с Python использовался Google Colab.
+### Реализовать совместную работу и передачу данных в связке Python - Google-Sheets – Unity.
 
-![Collab1](https://user-images.githubusercontent.com/114404329/192327326-840f89c6-cc97-4229-a8d7-715299bfccec.png)
-![Collab2](https://user-images.githubusercontent.com/114404329/192327333-7403293f-4219-4474-9582-f259ebdad788.png)
-
-Ход действий для выполнение задания, связанного с Unity:
-Сначала был создан новый Unity проект. В проект были добавлены куб и плоскость. К сцене был привязан скрип с выводом "Hello World!" на консоль. После выполнения скрипта было выведено сообщение в консоль "Hello World!".
-
-![Unity1](https://user-images.githubusercontent.com/114404329/192327283-4ab47208-b650-46a1-8307-b0a186da2d63.PNG)
-![unity2](https://user-images.githubusercontent.com/114404329/192327289-48009be2-0a74-4f02-a8ab-8efa992ec9e1.PNG)
-![Unity screan3](https://user-images.githubusercontent.com/114404329/192327291-a7857204-5caf-4927-a432-96916abfe79f.png)
-
+В Google Cloud подключил нужные расширения API сервисов: Drive, Sheets. Далее создал API-ключ, выгрузил ключ сервисного аккаунта
+![1](https://user-images.githubusercontent.com/114404329/195164170-259f092c-a319-428f-a02d-d88f0f260be8.PNG)
+Реализовал запись данных с помощью PyCharm на языке Python в Google Spreadsheets. Данные описывают изменение темпа инфляции на протяжении 11 отсчётных периодов, с учётом стоимости игрового объекта в каждый период.
+![4](https://user-images.githubusercontent.com/114404329/195164224-1f6fa39b-85c3-490d-8464-46386b577be3.PNG)
+![5](https://user-images.githubusercontent.com/114404329/195164281-366c16e6-7b4b-4d6e-bc27-6f267cea9c99.PNG)
+#Создал новый проект на Unity. Проект будет получать данные из Google Spreadsheets, которые я ранее записал в Google Docs с помощью скрипта(реализовал в PyCharm пунктом выше). Добавил в проект приложенные файлы.Написал функцию на Unity, с помощью которой воспризводится аудиофайл в зависимости от значения данных из таблицы.
+![6](https://user-images.githubusercontent.com/114404329/195164390-0fc3db0d-e0fd-4454-b50c-067d9ae40520.PNG)
+#Проверил,вызвав одну итерацию.
+![7 1](https://user-images.githubusercontent.com/114404329/195164414-ecf2af62-eb97-4009-8628-dfabedb8a6c1.PNG)
+![7 2](https://user-images.githubusercontent.com/114404329/195164437-7d662e46-98ef-415f-bfab-fe8d873fe4cc.PNG)
+![7 3](https://user-images.githubusercontent.com/114404329/195164452-8c6f6a19-5430-4545-adbe-beec6da7ac26.PNG)
+#Вызвал остальные итерации. В момент вызова испугался громких звуков( 
+![8 1](https://user-images.githubusercontent.com/114404329/195164638-8c6aa772-d697-4ba0-a2a4-9d295e2af78d.PNG)
+![8 2](https://user-images.githubusercontent.com/114404329/195164648-ca6fa05c-0ca4-43b2-8c4b-c8da73ddec9f.PNG)
+![8 3](https://user-images.githubusercontent.com/114404329/195164650-a96dad6b-3877-4e4a-afce-191d94139e24.PNG)
+![8 4](https://user-images.githubusercontent.com/114404329/195164652-20e38df7-975f-4a7b-8ca6-d02c82932503.PNG)
 ## Задание 2
 ### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
 Ход работы:
