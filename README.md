@@ -50,7 +50,7 @@
 
 ![5](https://user-images.githubusercontent.com/114404329/195164281-366c16e6-7b4b-4d6e-bc27-6f267cea9c99.PNG)
 
-Создал новый проект на Unity. Проект будет получать данные из Google Spreadsheets, которые я ранее записал в Google Docs с помощью скрипта(реализовал в PyCharm пунктом выше). Добавил в проект приложенные файлы.Написал функцию на Unity, с помощью которой воспризводится аудиофайл в зависимости от значения данных из таблицы.
+Создал новый проект на Unity. Проект будет получать данные из Google Spreadsheets, которые я ранее записал в Google Таблицу с помощью скрипта(реализовал в PyCharm пунктом выше). Добавил в проект приложенные файлы.Написал функцию на Unity, с помощью которой воспризводится аудиофайл в зависимости от значения данных из таблицы.
 
 ![6](https://user-images.githubusercontent.com/114404329/195164390-0fc3db0d-e0fd-4454-b50c-067d9ae40520.PNG)
 
@@ -72,137 +72,124 @@
 
 ![8 4](https://user-images.githubusercontent.com/114404329/195164652-20e38df7-975f-4a7b-8ca6-d02c82932503.PNG)
 ## Задание 2
-### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
-Ход работы:
-- Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+### Реализовать запись в Google-таблицу набора данных, полученных с помощью линейной регрессии из лабораторной работы № 1
 
-```py
+Отрефакторил код из прошлой лабораторной работы, добавил строки, чтобы результаты выводились в Google Таблицу.
 
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
+![2 1](https://user-images.githubusercontent.com/114404329/195169017-9d8b815c-a9b4-4d6e-854c-189cf14d94e3.PNG)
 
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
+![2 3](https://user-images.githubusercontent.com/114404329/195169024-1c5b61c3-8602-4008-a9df-6d2220c83c36.PNG)
 
-#Show the effect of a scatter plot
-plt.scatter(x,y)
+Проверил вывод в таблицу.
 
-```
-Перенёс данные в Google Colab:
-
-![0](https://user-images.githubusercontent.com/114404329/192331448-57ae7079-9b0a-48c3-969f-c786aa555b97.PNG)
-
-- Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
-
-Определил связь функций:
-
-Функция модели:
-
-```py
-
-def model(a, b, x):
-    return a * x + b 
-    
-```    
-
-Функция потерь:
-
-```py
-
-def lossFunction(a, b, x, y):
-    num = len(x)
-    prediction = model(a, b, x)
-    return (0.5 / num) * (np.square(prediction - y)).sum()
-
-```
-
-Функция оптимизации:
-
-```py
-
-def optimize(a, b, x, y, Lr):
-    num = len(x)
-    prediction = model(a, b, x)
-    da = (1.0 / num) * ((prediction - y) * x).sum()
-    db = (1.0 / num) * ((prediction - y).sum())
-    a = a - Lr * da
-    b = b - Lr * db
-    return a, b
-    
-```
-
-Шаг 1
-
-![1](https://user-images.githubusercontent.com/114404329/192333419-77e5df15-a1aa-4d3c-997f-a3f5e8075b38.PNG)
- 
-Шаг 2
-
-![2](https://user-images.githubusercontent.com/114404329/192333497-fef8fa0e-4bb3-4fe1-9d6d-fb5a6386395f.PNG)
-
-Шаг 3
-
-![3](https://user-images.githubusercontent.com/114404329/192333562-b807a78c-fb3d-47f8-a5aa-0ed12ab62b20.PNG)
-
-Шаг 4
-
-![4](https://user-images.githubusercontent.com/114404329/192333721-71abba83-bfce-402e-807f-e574c522888a.PNG)
-
-Шаг 5
-
-![5](https://user-images.githubusercontent.com/114404329/192333765-7fcd5556-1e3c-47e0-9e18-302e982dc966.PNG)
-
-Шаг 6
-
-![10000](https://user-images.githubusercontent.com/114404329/192333798-d80669b3-0482-4936-9aa7-a7ae7d840d24.PNG)
+![2 2](https://user-images.githubusercontent.com/114404329/195169020-b262e3f0-2eb1-45db-9d51-5fc086f47a2b.PNG)
 
 ## Задание 3
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### Самостоятельно разработать сценарий воспроизведения звукового сопровождения в Unity в зависимости от изменения считанных данных в задании 2.
 
-Да, должна. Если мы увеличим количества итераций, величина loss будет стремиться к нулю.
+Поменял значения так, чтобы это было похоже на репутацию и соответствующие реплике человуку,имеющему её.
 
-При 1 итерации, loss будет равна приблизительно 1411:
+![3 2](https://user-images.githubusercontent.com/114404329/195174890-b30d7edb-e31a-4549-85a5-88d9fff279ee.PNG)
 
-![1](https://user-images.githubusercontent.com/114404329/192337406-75337c9f-c27f-4f59-8829-f8e2ef08d6ef.PNG)
+![3 3](https://user-images.githubusercontent.com/114404329/195174893-0a327a0a-1f09-4e3f-89ea-52439943412d.PNG)
 
-При 10000 итераций, loss будет равна приблизительно 189:
+<picture>using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Networking;
+using SimpleJSON;
 
-![10000](https://user-images.githubusercontent.com/114404329/192337624-42d0a4f8-84e4-465c-a345-2ddb82a19e63.PNG)
+public class NewBehaviourScript : MonoBehaviour
+{
+    public AudioClip goodSpeak;
+    public AudioClip normalSpeak;
+    public AudioClip badSpeak;
+    private AudioSource selectAudio;
+    private Dictionary<string,float> dataSet = new Dictionary<string, float>();
+    private bool statusStart = false;
+    private int i = 1;
 
-При 1000000 итераций, loss будет равна приблизительно 182:
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(GoogleSheets());
+    }
 
-![1000000](https://user-images.githubusercontent.com/114404329/192338193-2c9b44cb-e9b9-49dd-82fb-f8a8d7c108b6.PNG)
+    // Update is called once per frame
+    void Update()
+    {
+        if (i > dataSet.Count) 
+        {
+            return;
+        }
+        if (dataSet["Mon_" + i.ToString()] >= 90 & statusStart == false & i <= dataSet.Count)
+        {
+            StartCoroutine(PlaySelectAudioGood());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+        }
 
-Эти примеры доказывают, что при увеличении колличества итераций, loss становится меньше, следовательно, стремится к нулю
+        if (dataSet["Mon_" + i.ToString()] <= 500 & dataSet["Mon_" + i.ToString()] >= 30 & statusStart == false & i <= dataSet.Count)
+        {
+            StartCoroutine(PlaySelectAudioNormal());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+        }
 
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
+        if (dataSet["Mon_" + i.ToString()] <= -0 & statusStart == false & i <= dataSet.Count)
+        {
+            StartCoroutine(PlaySelectAudioBad());
+            Debug.Log(dataSet["Mon_" + i.ToString()]);
+        }
+    }
 
-От параметра Lr зависил угол наклона между прямой и линией горизонта. Чем больше значение Lr, тем больше угол между ними.
-(Серая линия и красная кривая на скриншотах нарисованы в графическом редакторе Paint для наглядности)
+    IEnumerator GoogleSheets()
+    {
+        UnityWebRequest curentResp = UnityWebRequest.Get("https://sheets.googleapis.com/v4/spreadsheets/1xaf3NHEcjJtk_3BtuyEvQOxFDK187dLF9PCWf8NwQdU/values/Лист1?key=AIzaSyBoEQc3LUe4qNeZ_5kbk8WqL0UvbdXy86o");
+        yield return curentResp.SendWebRequest();
+        string rawResp = curentResp.downloadHandler.text;
+        var rawJson = JSON.Parse(rawResp);
+        foreach (var itemRawJson in rawJson["values"])
+        {
+            var parseJson = JSON.Parse(itemRawJson.ToString());
+            var selectRow = parseJson[0].AsStringList;
+            dataSet.Add(("Mon_" + selectRow[0]), float.Parse(selectRow[2]));
+        }
+    }
 
-При Ln = 0.00001:
-
-![0 00001](https://user-images.githubusercontent.com/114404329/192341786-9f98e7d6-6c8c-4fc2-aa03-9b2d075ef33d.png)
-
-При Ln = 0.0001:
-
-![0 0001](https://user-images.githubusercontent.com/114404329/192342456-8ce7a5e4-c3db-48f1-b823-7803a895ece8.png)
-
-При Ln = 0.001:
-
-![0 001](https://user-images.githubusercontent.com/114404329/192342494-69731086-7cf0-4bb2-9867-7234c98c1032.png)
-
+    IEnumerator PlaySelectAudioGood()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = goodSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(3);
+        statusStart = false;
+        i++;
+    }
+    IEnumerator PlaySelectAudioNormal()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = normalSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(3);
+        statusStart = false;
+        i++;
+    }
+    IEnumerator PlaySelectAudioBad()
+    {
+        statusStart = true;
+        selectAudio = GetComponent<AudioSource>();
+        selectAudio.clip = badSpeak;
+        selectAudio.Play();
+        yield return new WaitForSeconds(4);
+        statusStart = false;
+        i++;
+    }
+}
 
 ## Выводы
 
-В ходе данной работы я написал две простые программы на Ubity и Python(Google colab). Также по ютуб гайдам я настроил среды разработки.
-Далее, я проанализировал и реализовал код из методички, тем самым познакомившись с алгоритмом линейной регрессии и функциями модели, потерь и оптимизации. После были проведены эксперименты для выявления зависимости и закономерности.
+В ходе данной работы я научился соединять Google таблицу с кодом,Unity. Узнал как работать с Google Spreadsheets API на Python. Также узнал как получать данные в реальном времени из Google Spreadsheets в Unity. Также узнал, что в зависимости от диапазона данных можно воспроизводить звук в Unity.
 
 | Plugin | README |
 | ------ | ------ |
