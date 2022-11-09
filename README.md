@@ -1,5 +1,5 @@
 # АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
-Отчет по лабораторной работе #1 выполнил(а):
+Отчет по лабораторной работе #3 выполнил(а):
 - Мокроносов Александр Сергеевич
 - РИ210950
 Отметка о выполнении заданий (заполняется студентом):
@@ -8,7 +8,7 @@
 | ------ | ------ | ------ |
 | Задание 1 | * | 60 |
 | Задание 2 | * | 20 |
-| Задание 3 | * | 20 |
+| Задание 3 | # | 20 |
 
 знак "*" - задание выполнено; знак "#" - задание не выполнено;
 
@@ -35,80 +35,165 @@
 - ✨Magic ✨
 
 ## Цель работы
-Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
+Познакомиться с программными средствами для создания системы машинного обучения и ее интеграции в Unity.
 
 ## Задание 1
-### Написать программы Hello World на Python и Unity. 
+### Реализовать систему машинного обучения в связке Python - Google-Sheets – Unity.
+- Создаём новый Unity 3D проект.
+- Скачиваем папку с ML агентом.
+- Добавляем в Package Manager ML-Agents.
 
-Python:
-![image](https://user-images.githubusercontent.com/113508468/192731093-2398b509-0e72-4dc5-b73a-56556db99698.png)
-![image](https://user-images.githubusercontent.com/113508468/192731114-6ee36c9d-4207-4a9e-87c0-a34171633713.png)
+![image](https://user-images.githubusercontent.com/113508468/200816640-fe89cb89-952f-4fb5-810e-17d4163e3033.png)
 
-Unity:
-![image](https://user-images.githubusercontent.com/113508468/192731201-81fea6ab-52ad-46fb-9942-cc9fa90bdf9e.png)
+- Далее запускаем Anaconda Prompt для возможности запуска команд через консоль.
+- Далее пишем серию команд для создания и активации нового ML-агента, а также для скачивания необходимых библиотек:
+o mlagents 0.28.0;
+o torch 1.7.1;
+
+![image](https://user-images.githubusercontent.com/113508468/200818714-d7a3c8e8-fe06-409e-ac4c-e173d5eddd0d.png)
+
+-Создаём на сцене плоскость, куб и сферу. А также добавляем сфере C#-скрипт
+
+![image](https://user-images.githubusercontent.com/113508468/200824149-2a6e339a-a08a-4fcc-a8d2-7193a8ee8f47.png)
+
+-В скрипт файл добавляем код
+
+```C#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Unity.MLAgents;
+using Unity.MLAgents.Sensors;
+using Unity.MLAgents.Actuators;
+
+public class RollerAgent : Agent
+{
+    Rigidbody rBody;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rBody = GetComponent<Rigidbody>();
+    }
+
+    public Transform Target;
+    public override void OnEpisodeBegin()
+    {
+        if (this.transform.localPosition.y < 0)
+        {
+            this.rBody.angularVelocity = Vector3.zero;
+            this.rBody.velocity = Vector3.zero;
+            this.transform.localPosition = new Vector3(0, 0.5f, 0);
+        }
+
+        Target.localPosition = new Vector3(Random.value * 8-4, 0.5f, Random.value * 8-4);
+    }
+    public override void CollectObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(Target.localPosition);
+        sensor.AddObservation(this.transform.localPosition);
+        sensor.AddObservation(rBody.velocity.x);
+        sensor.AddObservation(rBody.velocity.z);
+    }
+    public float forceMultiplier = 10;
+    public override void OnActionReceived(ActionBuffers actionBuffers)
+    {
+        Vector3 controlSignal = Vector3.zero;
+        controlSignal.x = actionBuffers.ContinuousActions[0];
+        controlSignal.z = actionBuffers.ContinuousActions[1];
+        rBody.AddForce(controlSignal * forceMultiplier);
+
+        float distanceToTarget = Vector3.Distance(this.transform.localPosition, Target.localPosition);
+
+        if(distanceToTarget < 1.42f)
+        {
+            SetReward(1.0f);
+            EndEpisode();
+        }
+        else if (this.transform.localPosition.y < 0)
+        {
+            EndEpisode();
+        }
+    }
+}
+
+```
+-Объекту сфера добавляем и изменяем компоненты
+
+![image](https://user-images.githubusercontent.com/113508468/200825828-3e2cdb55-0167-4785-90d6-5991ef661f19.png)
+![image](https://user-images.githubusercontent.com/113508468/200825877-d69dc7c0-0fb1-46ed-8f43-4c0a50e925fd.png)
+
+-Добавляем файл конфигурации нейронной сети и следующий код:
+```yaml
+behaviors:
+  RollerBall:
+    trainer_type: ppo
+    hyperparameters:                 
+      batch_size: 10
+      buffer_size: 100
+      learning_rate: 3.0e-4
+      beta: 5.0e-4
+      epsilon: 0.2
+      lambd: 0.99
+      num_epoch: 3
+      learning_rate_schedule: linear
+    network_settings: 
+      normalize: false
+      hidden_units: 128
+      num_layers: 2
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    max_steps: 500000
+    time_horizon: 64
+    summary_freq: 10000
+```
+-Запускаем ml-agent
+![image](https://user-images.githubusercontent.com/113508468/200826303-0ecef4a0-63b6-463c-beba-a6eca763d13b.png)
+
+
+![image](https://user-images.githubusercontent.com/113508468/200826564-f2447ca5-6153-4963-b760-c8414861689c.png)
+![image](https://user-images.githubusercontent.com/113508468/200826624-1099cd6a-b173-4a35-8359-52b31c4ac9dd.png)
+
+-3 копии:
+![image](https://user-images.githubusercontent.com/113508468/200826849-7390a063-f876-4c0a-8be9-4e545e324d7a.png)
+![image](https://user-images.githubusercontent.com/113508468/200826922-6e9ccfaa-9a81-4f15-9b2a-210245b64973.png)
+
+-После обучения модели видно, что шарик стал двигаться напрямую к кубику, перестал постоянно падать за пределы платформы и стал быстрее находить кубик.
+
 
 ## Задание 2
-### В разделе «ход работы» пошагово выполнить каждый пункт с описанием и примером реализации задачи по теме лабораторной работы.
+### Подробно опишите каждую строку файла конфигурации нейронной сети, доступного в папке с файлами проекта по ссылке. Самостоятельно найдите информацию о компонентах Decision Requester, Behavior Parameters, добавленных на сфере.
 
-Ход работы:
-- 1.	Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+```
+behaviors:
+  RollerBall:                        #Имя агента
+    trainer_type: ppo                #Устанавливаем режим обучения.
+    hyperparameters:                 #Задаются гиперпараметры.
+      batch_size: 10                 #Количество опытов на каждой итерации для обновления экстремумов функции.
+      buffer_size: 100               #Количество опыта, которое нужно набрать перед обновлением модели.
+      learning_rate: 3.0e-4          #Устанавливает шаг обучения (начальная скорость).
+      beta: 5.0e-4                   #Отвечает за случайность действия, повышая разнообразие и иследованность пространства обучения.
+      epsilon: 0.2                   #Порог расхождений между старой и новой политиками при обновлении.
+      lambd: 0.99                    #Определяет авторитетность оценок значений во времени. Чем выше значение, тем более авторитетен набор предыдущих оценок.
+      num_epoch: 3                   #Количество проходов через буфер опыта, при выполнении оптимизации.
+      learning_rate_schedule: linear #Определяет, как скорость обучения изменяется с течением времени, линейно уменьшает скорость.
+    network_settings:                #Определяет сетевые настройки.
+      normalize: false               #Отключается нормализация входных данных.
+      hidden_units: 128              #Количество нейронов в скрытых слоях сети.
+      num_layers: 2                  #Количество скрытых слоев для размещения нейронов.
+    reward_signals:                  #Задает сигналы о вознаграждении.
+      extrinsic:
+        gamma: 0.99                  #Коэффициент скидки для будущих вознаграждений.
+        strength: 1.0                #Шаг для learning_rate.
+    max_steps: 500000                #Общее количество шагов, которые должны быть выполнены в среде до завершения обучения.
+    time_horizon: 64                 #Количество циклов ML агента, хранящихся в буфере до ввода в модель.
+    summary_freq: 10000              #Количество опыта, который необходимо собрать перед созданием и отображением статистики.
+```
 
- 1:
- ![image](https://user-images.githubusercontent.com/113508468/192731718-3d4099ca-6228-482d-b504-b1c5e2aa10f3.png)
+- Decision Requester - запрашивает решение через регулярные промежутки времени и обрабатывает чередование между ними во время обучения.
 
- 2:
- ![image](https://user-images.githubusercontent.com/113508468/192732091-445f14f9-bbd9-4f26-b4db-eb059d4a2b2f.png)
-
- 3:
- Шаг 1:
- ![image](https://user-images.githubusercontent.com/113508468/192732242-daf9a0bd-60e3-47a4-94c6-9502c1e8af4d.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732257-d0bd732e-1253-48b9-b459-834a7346000c.png)
-
- Шаг 2:
- ![image](https://user-images.githubusercontent.com/113508468/192732314-8433d0bb-facd-43ac-bd1f-5737e6f5a643.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732334-3befa9b2-f64e-48e9-8c7e-ae7efc293c23.png)
-
- Шаг 3:
- ![image](https://user-images.githubusercontent.com/113508468/192732435-0a367528-7367-4c42-87a4-6ddef0128df6.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732456-55c364dd-850f-4499-99ec-7ba8c82922cb.png)
-
- Шаг 4:
- ![image](https://user-images.githubusercontent.com/113508468/192732513-6f0fe776-f034-458f-b681-a322e7765824.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732553-5669f94b-fafe-40f5-bae7-95a2b0f28d78.png)
- 
- Шаг 5:
- ![image](https://user-images.githubusercontent.com/113508468/192732577-7c4fb657-21ee-4412-8394-272c61b9bdf6.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732595-ebad0c91-d4af-4dcf-b335-9c9bdd8c1aeb.png)
-
- Шаг 6:
- ![image](https://user-images.githubusercontent.com/113508468/192732650-19500738-28bb-4e85-ab4c-8f9c5e1267fe.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732681-c65d8885-3cba-4a16-8b83-d3c53b95765a.png)
-
-
-## Задание 3
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
-
-При уменьшении размера массивов x и y величина less будет стремить к нулю
-# ![image](https://user-images.githubusercontent.com/113508468/192739494-69026f64-2a8d-4441-85d5-3ab82248ccdc.png)
-![image](https://user-images.githubusercontent.com/113508468/192739753-b9d5360f-8623-4845-ab8c-2fe3c38890e5.png)
-
-Но при увеличении размеров массивов всё наоборот
-# ![image](https://user-images.githubusercontent.com/113508468/192740447-517a4b08-d0c4-495e-91b1-5c7a2c489c05.png)
-![image](https://user-images.githubusercontent.com/113508468/192740480-7194b348-8105-4263-ab97-57e92487b77e.png)
-
-
-## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
-
-Параметр Lr помогает более точно подогнать отрезок и чем меньше параметр, тем меньше точность.
-#![image](https://user-images.githubusercontent.com/113508468/192744027-98d8dc1f-0016-4229-9369-65b7421906e5.png)
-![image](https://user-images.githubusercontent.com/113508468/192744213-96402b46-3039-4326-9f52-a4614c2b416e.png)
-
-
-## Выводы
-
-В первом задании научились писать программу "Hello World" на unity, а также python, а именно в google colab.
-Во втором задании ознакомились с основными операторами языка python на примере реализации линейной регрессии.
+- Behavior Parameters - определяет принятие объектом решений, в него указывается какой тип поведения будет использоваться: уже обученная модель или удалённый процесс обучения.
 
 | Plugin | README |
 | ------ | ------ |
