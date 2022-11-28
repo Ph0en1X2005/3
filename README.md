@@ -29,15 +29,15 @@
 - добавил пустой объект, добавил к нему скрипт Perceptron
 ![image](https://user-images.githubusercontent.com/60822244/204272208-bff1f805-0479-4d18-ad50-c75fb4f99268.png)
 - заполнил каждый элемент
-1. OR, понадобилось 4 эпохи, 5 вычисляла корректно
+1. OR, понадобилось 3 эпохи, 4 вычисляла корректно
 
 ![image](https://user-images.githubusercontent.com/60822244/204275993-da71454e-d42c-441b-96d7-2de93902ab02.png)
 ![image](https://user-images.githubusercontent.com/60822244/204275107-484f83ac-a1b4-49e9-ac1b-6901d3a9fce6.png)
-2. AND, понадобилось 5 эпох, 6 вычисляла корректно
+2. AND, понадобилось 4 эпохи, 5 вычисляла корректно
 
 ![image](https://user-images.githubusercontent.com/60822244/204276056-fc5d36d7-7c81-4c02-9bfe-e6511e0be419.png)
 ![image](https://user-images.githubusercontent.com/60822244/204275587-2ac5ea8d-fdec-4bb5-af15-96d5acd70b26.png)
-3. NAND, понадобилось 6 эпох, 7 вычисляла корректно
+3. NAND, понадобилось 5 эпох, 6 вычисляла корректно
 
 ![image](https://user-images.githubusercontent.com/60822244/204276085-69baf390-89f3-4508-9ed3-b178cb536b87.png)
 ![image](https://user-images.githubusercontent.com/60822244/204275918-b12ff651-123a-46f9-a453-e36005b06da0.png)
