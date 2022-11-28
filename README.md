@@ -22,7 +22,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ## Цель работы
-Ознакомиться с работой перцептрона.
+### Ознакомиться с работой перцептрона
 ## Задание 1
 ### В проекте Unity реализовать перцептрон, который умеет производить вычисления
 Ход работы:
