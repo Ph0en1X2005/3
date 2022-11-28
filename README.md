@@ -57,7 +57,40 @@
 ## Задание 3
 ### Построить визуальную модель работы перцептрона на сцене Unity
 Ход работы:
-- создал модель для работы NAND, 
+- создал модель для работы NAND, черные кубы - нули, белые - единицы
+![image](https://user-images.githubusercontent.com/60822244/204301909-52b25b47-9946-4397-9148-56273c261e98.png)
+- создал скрипт для изменения цвета при столкновении
+```
+using UnityEngine;
+
+public class ChangeColor : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Renderer>().material.color == Color.black && this.gameObject.GetComponent<Renderer>().material.color == Color.black)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if (other.gameObject.GetComponent<Renderer>().material.color == Color.black && this.gameObject.GetComponent<Renderer>().material.color == Color.white)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if (other.gameObject.GetComponent<Renderer>().material.color == Color.white && this.gameObject.GetComponent<Renderer>().material.color == Color.black)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.black;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.black;
+        }
+    }
+}
+```
+- кубы меняют цвет в зависимости от результата логического сложения
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/60822244/204302396-59b4abc0-8407-4eea-b6ed-1aecd9f488ea.gif)
 
 ## Выводы
 
