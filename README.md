@@ -45,13 +45,15 @@
 
 ![image](https://user-images.githubusercontent.com/60822244/204277780-5b64303f-6db7-4343-b352-b1a439c139e7.png)
 ![image](https://user-images.githubusercontent.com/60822244/204277742-77c17538-d4bc-45d0-937f-77fd33f14c92.png)
-
 ## Задание 2
 ### Построить графики зависимости количества эпох от ошибки обучения. Указать от чего зависит необходимое количество эпох обучения
 Ход работы:
--
+- занес данные в excel и построил график
 
+![image](https://user-images.githubusercontent.com/60822244/204281211-3dae577e-bbc3-4d04-a3cf-e016dff9c4ba.png)
+- количество эпох зависит от смещения и веса
 
+![image](https://user-images.githubusercontent.com/60822244/204281641-27466562-6385-4abd-bd2f-f9cb5cdeebd2.png)
 ## Задание 3
 ### Построить визуальную модель работы перцептрона на сцене Unity
 Ход работы:
