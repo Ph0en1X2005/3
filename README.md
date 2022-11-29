@@ -1,14 +1,14 @@
 # АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
-Отчет по лабораторной работе #1 выполнил(а):
-- Иванова Ивана Варкравтовна
-- РИ000024
+Отчет по лабораторной работе #4 выполнил(а):
+- Винник Константин Алексеевич
+- РИ210943
 Отметка о выполнении заданий (заполняется студентом):
 
 | Задание | Выполнение | Баллы |
 | ------ | ------ | ------ |
-| Задание 1 | # | 60 |
-| Задание 2 | # | 20 |
-| Задание 3 | # | 20 |
+| Задание 1 | * | 60 |
+| Задание 2 | * | 20 |
+| Задание 3 | * | 20 |
 
 знак "*" - задание выполнено; знак "#" - задание не выполнено;
 
@@ -21,109 +21,79 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
-Структура отчета
-
-- Данные о работе: название работы, фио, группа, выполненные задания.
-- Цель работы.
-- Задание 1.
-- Код реализации выполнения задания. Визуализация результатов выполнения (если применимо).
-- Задание 2.
-- Код реализации выполнения задания. Визуализация результатов выполнения (если применимо).
-- Задание 3.
-- Код реализации выполнения задания. Визуализация результатов выполнения (если применимо).
-- Выводы.
-- ✨Magic ✨
-
 ## Цель работы
-Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
-
+### Ознакомиться с работой перцептрона
 ## Задание 1
-### Пошагово выполнить каждый пункт раздела "ход работы" с описанием и примерами реализации задач
+### В проекте Unity реализовать перцептрон, который умеет производить вычисления
 Ход работы:
-- Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
+- добавил пустой объект, добавил к нему скрипт Perceptron
+![image](https://user-images.githubusercontent.com/60822244/204272208-bff1f805-0479-4d18-ad50-c75fb4f99268.png)
+- заполнил каждый элемент
+1. OR, понадобилось 3 эпохи, 4 вычисляла корректно
 
-```py
+![image](https://user-images.githubusercontent.com/60822244/204275993-da71454e-d42c-441b-96d7-2de93902ab02.png)
+![image](https://user-images.githubusercontent.com/60822244/204275107-484f83ac-a1b4-49e9-ac1b-6901d3a9fce6.png)
+2. AND, понадобилось 4 эпохи, 5 вычисляла корректно
 
-In [ ]:
-#Import the required modules, numpy for calculation, and Matplotlib for drawing
-import numpy as np
-import matplotlib.pyplot as plt
-#This code is for jupyter Notebook only
-%matplotlib inline
+![image](https://user-images.githubusercontent.com/60822244/204276056-fc5d36d7-7c81-4c02-9bfe-e6511e0be419.png)
+![image](https://user-images.githubusercontent.com/60822244/204275587-2ac5ea8d-fdec-4bb5-af15-96d5acd70b26.png)
+3. NAND, понадобилось 5 эпох, 6 вычисляла корректно
 
-# define data, and change list to array
-x = [3,21,22,34,54,34,55,67,89,99]
-x = np.array(x)
-y = [2,22,24,65,79,82,55,130,150,199]
-y = np.array(y)
+![image](https://user-images.githubusercontent.com/60822244/204276085-69baf390-89f3-4508-9ed3-b178cb536b87.png)
+![image](https://user-images.githubusercontent.com/60822244/204275918-b12ff651-123a-46f9-a453-e36005b06da0.png)
+4. XOR, даже спустя 100000 эпох не смог обучиться и поэтому некорректно выполняет вычисления
 
-#Show the effect of a scatter plot
-plt.scatter(x,y)
-
-```
-
-- Определите связанные функции. Функция модели: определяет модель линейной регрессии wx+b. Функция потерь: функция потерь среднеквадратичной ошибки. Функция оптимизации: метод градиентного спуска для нахождения частных производных w и b.
-
-
+![image](https://user-images.githubusercontent.com/60822244/204277780-5b64303f-6db7-4343-b352-b1a439c139e7.png)
+![image](https://user-images.githubusercontent.com/60822244/204277742-77c17538-d4bc-45d0-937f-77fd33f14c92.png)
 ## Задание 2
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+### Построить графики зависимости количества эпох от ошибки обучения. Указать от чего зависит необходимое количество эпох обучения
+Ход работы:
+- занес данные в excel и построил график
 
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
+![image](https://user-images.githubusercontent.com/60822244/204281211-3dae577e-bbc3-4d04-a3cf-e016dff9c4ba.png)
+- количество эпох зависит от смещения и веса
 
-```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
-```
-
+![image](https://user-images.githubusercontent.com/60822244/204281641-27466562-6385-4abd-bd2f-f9cb5cdeebd2.png)
 ## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
-
-- Перечисленные в этом туториале действия могут быть выполнены запуском на исполнение скрипт-файла, доступного [в репозитории](https://github.com/Den1sovDm1triy/hfss-scripting/blob/main/ScreatingSphereInAEDT.py).
-- Для запуска скрипт-файла откройте Ansys Electronics Desktop. Перейдите во вкладку [Automation] - [Run Script] - [Выберите файл с именем ScreatingSphereInAEDT.py из репозитория].
-
-```py
-
-import ScriptEnv
-ScriptEnv.Initialize("Ansoft.ElectronicsDesktop")
-oDesktop.RestoreWindow()
-oProject = oDesktop.NewProject()
-oProject.Rename("C:/Users/denisov.dv/Documents/Ansoft/SphereDIffraction.aedt", True)
-oProject.InsertDesign("HFSS", "HFSSDesign1", "HFSS Terminal Network", "")
-oDesign = oProject.SetActiveDesign("HFSSDesign1")
-oEditor = oDesign.SetActiveEditor("3D Modeler")
-oEditor.CreateSphere(
-	[
-		"NAME:SphereParameters",
-		"XCenter:="		, "0mm",
-		"YCenter:="		, "0mm",
-		"ZCenter:="		, "0mm",
-		"Radius:="		, "1.0770329614269mm"
-	], 
-)
-
+### Построить визуальную модель работы перцептрона на сцене Unity
+Ход работы:
+- создал модель для работы NAND, черные кубы - нули, белые - единицы
+![image](https://user-images.githubusercontent.com/60822244/204301909-52b25b47-9946-4397-9148-56273c261e98.png)
+- создал скрипт для изменения цвета при столкновении
 ```
+using UnityEngine;
 
+public class ChangeColor : MonoBehaviour
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Renderer>().material.color == Color.black && this.gameObject.GetComponent<Renderer>().material.color == Color.black)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if (other.gameObject.GetComponent<Renderer>().material.color == Color.black && this.gameObject.GetComponent<Renderer>().material.color == Color.white)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else if (other.gameObject.GetComponent<Renderer>().material.color == Color.white && this.gameObject.GetComponent<Renderer>().material.color == Color.black)
+        {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.white;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.white;
+        }
+        else {
+            other.gameObject.GetComponent<Renderer>().material.color = Color.black;
+            this.gameObject.GetComponent<Renderer>().material.color = Color.black;
+        }
+    }
+}
+```
+- кубы меняют цвет в зависимости от результата логического сложения
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/60822244/204302396-59b4abc0-8407-4eea-b6ed-1aecd9f488ea.gif)
 ## Выводы
-
-Абзац умных слов о том, что было сделано и что было узнано.
+Я познакомился с работой перцептрона, который вычисляет различные функции, построил график зависимостей, построил визуальную модель работы перцептрона на сцене Unity
 
 | Plugin | README |
 | ------ | ------ |
