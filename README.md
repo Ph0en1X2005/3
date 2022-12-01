@@ -1,5 +1,5 @@
 # АНАЛИЗ ДАННЫХ И ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ [in GameDev]
-Отчет по лабораторной работе #1 выполнил(а):
+Отчет по лабораторной работе #2 выполнил(а):
 - Мокроносов Александр Сергеевич
 - РИ210950
 Отметка о выполнении заданий (заполняется студентом):
@@ -8,7 +8,7 @@
 | ------ | ------ | ------ |
 | Задание 1 | * | 60 |
 | Задание 2 | * | 20 |
-| Задание 3 | * | 20 |
+| Задание 3 | # | 20 |
 
 знак "*" - задание выполнено; знак "#" - задание не выполнено;
 
@@ -35,80 +35,110 @@
 - ✨Magic ✨
 
 ## Цель работы
-Ознакомиться с основными операторами зыка Python на примере реализации линейной регрессии.
+Познакомиться с программными средствами для организции передачи данных между инструментами google, Python и Unity
 
 ## Задание 1
-### Написать программы Hello World на Python и Unity. 
-
-Python:
-![image](https://user-images.githubusercontent.com/113508468/192731093-2398b509-0e72-4dc5-b73a-56556db99698.png)
-![image](https://user-images.githubusercontent.com/113508468/192731114-6ee36c9d-4207-4a9e-87c0-a34171633713.png)
-
-Unity:
-![image](https://user-images.githubusercontent.com/113508468/192731201-81fea6ab-52ad-46fb-9942-cc9fa90bdf9e.png)
-
-## Задание 2
-### В разделе «ход работы» пошагово выполнить каждый пункт с описанием и примером реализации задачи по теме лабораторной работы.
+### Реализовать совместную работу и передачу данных в связке Python - Google-Sheets – Unity. 
 
 Ход работы:
-- 1.	Произвести подготовку данных для работы с алгоритмом линейной регрессии. 10 видов данных были установлены случайным образом, и данные находились в линейной зависимости. Данные преобразуются в формат массива, чтобы их можно было вычислить напрямую при использовании умножения и сложения.
 
- 1:
- ![image](https://user-images.githubusercontent.com/113508468/192731718-3d4099ca-6228-482d-b504-b1c5e2aa10f3.png)
+1. В облачном сервисе google console подключить API для работы с google sheets и google drive.
 
- 2:
- ![image](https://user-images.githubusercontent.com/113508468/192732091-445f14f9-bbd9-4f26-b4db-eb059d4a2b2f.png)
+![Снимок экрана (415)](https://user-images.githubusercontent.com/113508468/204993447-897ddfe7-7b77-42cc-9c7d-c6e8a9c4ca70.jpg)
 
- 3:
- Шаг 1:
- ![image](https://user-images.githubusercontent.com/113508468/192732242-daf9a0bd-60e3-47a4-94c6-9502c1e8af4d.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732257-d0bd732e-1253-48b9-b459-834a7346000c.png)
+2. Реализовать запись данных из скрипта на python в google-таблицу. Данные описывают изменение темпа инфляции на протяжении 11 отсчётных периодов, с учётом стоимости игрового объекта в каждый период.
 
- Шаг 2:
- ![image](https://user-images.githubusercontent.com/113508468/192732314-8433d0bb-facd-43ac-bd1f-5737e6f5a643.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732334-3befa9b2-f64e-48e9-8c7e-ae7efc293c23.png)
+![image](https://user-images.githubusercontent.com/113508468/204994108-2788caec-3016-44f4-9d9e-d16d8bee8519.png)
 
- Шаг 3:
- ![image](https://user-images.githubusercontent.com/113508468/192732435-0a367528-7367-4c42-87a4-6ddef0128df6.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732456-55c364dd-850f-4499-99ec-7ba8c82922cb.png)
+3. Создать новый проект на Unity, который будет получать данные из google-таблицы, в которую были записаны данные в предыдущем пункте.
 
- Шаг 4:
- ![image](https://user-images.githubusercontent.com/113508468/192732513-6f0fe776-f034-458f-b681-a322e7765824.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732553-5669f94b-fafe-40f5-bae7-95a2b0f28d78.png)
- 
- Шаг 5:
- ![image](https://user-images.githubusercontent.com/113508468/192732577-7c4fb657-21ee-4412-8394-272c61b9bdf6.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732595-ebad0c91-d4af-4dcf-b335-9c9bdd8c1aeb.png)
+4. Написать функционал на Unity, в котором будет воспризводиться аудио-файл в зависимости от значения данных из таблицы.
 
- Шаг 6:
- ![image](https://user-images.githubusercontent.com/113508468/192732650-19500738-28bb-4e85-ab4c-8f9c5e1267fe.png)
- ![image](https://user-images.githubusercontent.com/113508468/192732681-c65d8885-3cba-4a16-8b83-d3c53b95765a.png)
+![image](https://user-images.githubusercontent.com/113508468/205001961-2018f6a3-7047-4444-877d-f4a493406543.png)
 
 
-## Задание 3
-### Должна ли величина loss стремиться к нулю при изменении исходных данных? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ.
+## Задание 2
+### Передадим значение loss в гугл-таблицу.
 
-При уменьшении размера массивов x и y величина less будет стремить к нулю
-# ![image](https://user-images.githubusercontent.com/113508468/192739494-69026f64-2a8d-4441-85d5-3ab82248ccdc.png)
-![image](https://user-images.githubusercontent.com/113508468/192739753-b9d5360f-8623-4845-ab8c-2fe3c38890e5.png)
+```
+import gspread
+import numpy as np
+import matplotlib.pyplot as plt
 
-Но при увеличении размеров массивов всё наоборот
-# ![image](https://user-images.githubusercontent.com/113508468/192740447-517a4b08-d0c4-495e-91b1-5c7a2c489c05.png)
-![image](https://user-images.githubusercontent.com/113508468/192740480-7194b348-8105-4263-ab97-57e92487b77e.png)
+gc = gspread.service_account(filename='unitydatascience-365207-b1a58de370e3.json')
+sh = gc.open("UnitySheets")
+priceX = np.random.randint(2000, 10000, 11)
+priceX = np.array(priceX)
+priceY = np.random.randint(2000, 10000, 11)
+priceY = np.array(priceY)
+mon = list(range(1, 11))
 
 
-## Задание 3
-### Какова роль параметра Lr? Ответьте на вопрос, приведите пример выполнения кода, который подтверждает ваш ответ. В качестве эксперимента можете изменить значение параметра.
+def model(a, b, x):
+  return a * x + b
 
-Параметр Lr помогает более точно подогнать отрезок и чем меньше параметр, тем меньше точность.
-#![image](https://user-images.githubusercontent.com/113508468/192744027-98d8dc1f-0016-4229-9369-65b7421906e5.png)
-![image](https://user-images.githubusercontent.com/113508468/192744213-96402b46-3039-4326-9f52-a4614c2b416e.png)
 
+def loss_function(a, b, x, y):
+  num = len(x)
+  prediction = model(a, b, x)
+  return (0.5 / num) * (np.square(prediction - y)).sum()
+
+
+def optimize(a, b, x, y):
+  num = len(x)
+  prediction = model(a, b, x)
+  da = (1.0 / num) * ((prediction - y) * x).sum()
+  db = (1.0 / num) * (prediction - y).sum()
+  a = a - Lr * da
+  b = b - Lr * db
+  return a, b
+
+
+def iterate (a, b, x, y, times):
+  for i in range(times):
+    a, b = optimize(a, b, x, y)
+  return a, b
+
+
+x = [2, 11, 13, 16, 25, 36, 49, 56, 76, 84, 99]
+x = np.array(x)
+y = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+y = np.array(y)
+
+a = np.random.rand(1)
+b = np.random.rand(1)
+Lr = 0.000001
+
+a, b = iterate(a, b, priceX, priceY, 1)
+prediction = model(a, b, priceX)
+loss = loss_function(a, b, priceX, priceY)
+print(a, b, loss)
+plt.scatter(x, y)
+plt.plot(x, prediction)
+
+
+i = 0
+while i <= len(mon):
+    i += 1
+    if i == 0:
+        continue
+    else:
+        tempInf = ((prediction[i-1]-prediction[i-2])/prediction[i-2])*100
+        tempInf = str(tempInf)
+        tempInf = tempInf.replace('.', ',')
+        sh.sheet1.update(('A' + str(i)), str(i))
+        sh.sheet1.update(('B' + str(i)), str(prediction[i-1]//1))
+        sh.sheet1.update(('C' + str(i)), str(tempInf))
+        print(prediction)
+
+
+```
+
+![image](https://user-images.githubusercontent.com/113508468/205005329-743b073c-9bfd-4a7a-b137-6122bbf6bbd8.png)
 
 ## Выводы
 
-В первом задании научились писать программу "Hello World" на unity, а также python, а именно в google colab.
-Во втором задании ознакомились с основными операторами языка python на примере реализации линейной регрессии.
+В результате проделанной лабораторной работы узнал, как реализовать совместную работу и передачу данных в связке Python - Google-Sheets – Unity: писать скрипт на Python для заполнения Google-таблиц, получать, обрабатывать данные из Google-Sheets в Unity через скрипт на C#. 
 
 | Plugin | README |
 | ------ | ------ |
