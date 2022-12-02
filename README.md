@@ -56,7 +56,7 @@
 
 5. Обучаем нейросеть.
 
-![image](https://user-images.githubusercontent.com/113508468/205337181-db044adb-e09b-45d9-9fc0-444f7d9111af.png)
+![image](https://user-images.githubusercontent.com/113508468/205337468-7d31f12a-6e85-4a70-ab5a-fe14e62a1622.png)
 
 ## Выводы
 
