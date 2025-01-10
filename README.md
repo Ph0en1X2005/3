@@ -105,7 +105,7 @@ plt.title('Урон различных типов оружия')
 plt.xlabel('Оружие')
 plt.ylabel('Урон')
 plt.show()
-
+```
 
 
 
