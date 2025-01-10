@@ -92,6 +92,8 @@
 ## Задание 3
 ### Решение в 80+ баллов должно визуализировать данные из google-таблицы, и с помощью Python передавать переменные в проект Unity. В Python данные также должны быть визуализированы.
 
+```py
+
 import pandas as pd
 
 url = 'https://docs.google.com/spreadsheets/d/1KIIE18FYnqLvxIIUsrHOu3RzTzvf1hT-tSwLXu3q3Nw/edit?gid=0#gid=0'
