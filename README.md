@@ -74,7 +74,12 @@
 -
 - Среднеквадратическое отклонение (СКО)
 
-![image](https://github.com/user-attachments/assets/a2236287-4405-4edf-b0ff-bdc73fc35b33)
+![image](https://github.com/user-attachments/assets/7ca1f5e2-8c5c-4a7e-90d3-a4622fbb0851)
+-
+- Разброс урона оружия
+
+
+
 
 
  
