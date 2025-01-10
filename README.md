@@ -61,6 +61,8 @@
 - Разброс урона оружия
 ![image](https://github.com/user-attachments/assets/c665d9f5-9d13-4884-b185-4c87454f8f87)
 - Вариативность времени отклика игрока (реакция на события)
+  ![image](https://github.com/user-attachments/assets/a1d63d2a-e704-4e78-a8f6-23c433bce539)
+
  
 
 
