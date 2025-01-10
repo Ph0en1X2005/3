@@ -69,6 +69,14 @@
 
   ![image](https://github.com/user-attachments/assets/a1d63d2a-e704-4e78-a8f6-23c433bce539)
 
+
+Пример для автомата:
+-
+- Среднеквадратическое отклонение (СКО)
+
+![image](https://github.com/user-attachments/assets/a2236287-4405-4edf-b0ff-bdc73fc35b33)
+
+
  
 
 
