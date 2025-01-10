@@ -67,7 +67,7 @@
 -
 - Вариативность времени отклика игрока (реакция на события)
 
-  ![image](https://github.com/user-attachments/assets/a1d63d2a-e704-4e78-a8f6-23c433bce539)
+![image](https://github.com/user-attachments/assets/a1d63d2a-e704-4e78-a8f6-23c433bce539)
 
 
 Пример для автомата:
@@ -78,15 +78,14 @@
 -
 - Разброс урона оружия
 
+![image](https://github.com/user-attachments/assets/8ac30945-9504-440b-b222-e3c181e0fe8d)
+-
+- Вариативность времени отклика игрока (реакция на события)
+
+![image](https://github.com/user-attachments/assets/9012c99a-570e-4849-9a5d-b47b0d2d6992)
 
 
 
-
- 
-
-
-
-  
 
 
 
